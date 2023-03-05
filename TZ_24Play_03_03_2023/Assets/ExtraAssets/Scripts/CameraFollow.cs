@@ -20,4 +20,16 @@ public class CameraFollow : MonoBehaviour
         transform.position = target.position + offset;
         }
     }
+
+    public void Change()
+    {
+       if(shaker)
+       {
+         shaker = false;
+       }
+       else
+       {
+         shaker = true;
+       }
+    }
 }

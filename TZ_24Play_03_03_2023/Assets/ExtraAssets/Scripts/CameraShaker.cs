@@ -11,11 +11,16 @@ public class CameraShaker : MonoBehaviour
 
      public static void Invoke(){
         Shake?.Invoke();
-        CameraFollow.instance.shaker = true;
      }
 
-     private void OnEnable() => Shake += CameraShake;
-     private void OnDisable() => Shake -= CameraShake;
+     private void OnEnable()
+      {
+        Shake += CameraShake;
+      }
+     private void OnDisable()
+      {
+        Shake -= CameraShake;
+      }
 
      private void CameraShake()
      {

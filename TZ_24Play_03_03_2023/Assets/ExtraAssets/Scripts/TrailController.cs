@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class TrailController : MonoBehaviour
 {
-    TrailRenderer trail;
+    public float speed = 5f;   // Скорость игрока
+    public TrailRenderer trail;  // Ссылка на компонент Trail Renderer
 
-    void Start()
+    private void Update()
     {
-        trail = GetComponent<TrailRenderer>();
-    }
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-    void Update()
-    {
-        Vector3[] points = new Vector3[trail.positionCount];
-        for (int i = 0; i < trail.positionCount; i++)
-        {
-            points[i] = transform.position;
-        }
-        trail.SetPositions(points);
+        // Вычисляем новую позицию игрока
+        Vector3 position = transform.position + new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime;
+
+        // Двигаем игрока
+        transform.position = position;
+
+        // Устанавливаем позицию Trail Renderer так, чтобы она оставалась на месте
+        trail.transform.position = transform.position;
     }
 }

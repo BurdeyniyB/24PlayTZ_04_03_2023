@@ -35,10 +35,16 @@ public class CollisionBlock : MonoBehaviour
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Red")
         {
-          CameraFollow.instance.shaker = false;
-          CameraShaker.Invoke();
           this.gameObject.transform.SetParent(GameObject.Find("CubeWall").transform);
+          CameraShaker.Invoke();
+          CameraFollow.instance.enabled = false;
+          Invoke("Follow", 0.5f);
         }
+    }
+
+    void Follow()
+    {
+        CameraFollow.instance.enabled = true;
     }
 
     void DeleteAnim()
