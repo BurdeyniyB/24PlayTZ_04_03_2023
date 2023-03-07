@@ -15,7 +15,6 @@ public class CollisionBlock : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         if (other.CompareTag("Yellow"))
         {
             Destroy(other.gameObject);
